@@ -26,7 +26,7 @@ colnames(shannon_div)[1:2] <- c("Sample","Shannon")
 ````R
 wilcox.test(Shannon ~ Species, data = shannon_div)
 ````
-````py
+````ruby
 RESULTS
 Wilcoxon rank sum exact test
 data:  Shannon by Species
