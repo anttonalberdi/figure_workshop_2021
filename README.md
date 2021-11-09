@@ -26,7 +26,7 @@ colnames(shannon_div)[1:2] <- c("Sample","Shannon")
 ````R
 wilcox.test(Shannon ~ Species, data = shannon_div)
 ````
-````html
+````py
 RESULTS
 Wilcoxon rank sum exact test
 data:  Shannon by Species
@@ -38,7 +38,7 @@ As p-value < 0.05 we accept that there are diversity differences between species
 ````R
 summary(lme(Shannon ~ Origin, random=~1|Individual/Species, data=shannon_div))
 ````
-````
+````py
 RESULTS
 Fixed effects:  Shannon ~ Origin
                Value Std.Error DF  t-value p-value
@@ -57,7 +57,7 @@ bray_dist <- vegdist(t(counts), method="bray", binary=FALSE)
 bray_dist <- adonis(data = bray_dist)
 adonis2(bray_dist ~ Origin/Species, data = metadata)
 ````
-````
+````py
 RESULTS
 Df SumOfSqs      R2      F Pr(>F)    
 Origin          1   1.7092 0.06563 4.8451  0.001 ***
