@@ -26,14 +26,14 @@ colnames(shannon_div)[1:2] <- c("Sample","Shannon")
 ````R
 wilcox.test(Shannon ~ Species, data = shannon_div)
 ````
-
+````
 **RESULTS:**
 Wilcoxon rank sum exact test
 data:  Shannon by Species
 W = 856, p-value = 7.593e-12
 
 As p-value < 0.05 we accept that there are diversity differences between species (regardless of origin).
-
+````
 # Does overall diversity change between origins?
 ````R
 summary(lme(Shannon ~ Origin, random=~1|Individual/Species, data=shannon_div))
