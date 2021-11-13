@@ -33,20 +33,28 @@ Below you will find a short text about the methods and results of a research stu
 
 > METHODS
 >
-> We captured a total of 30 individuals belonging to two small mammal species, namely Apodemus sylvaticus (N=15) and Crocidura russula (N=15) in 4 different sampling locations. The captured animals were taken into an experimentation facility were they where kept for 5 weeks to study the effect of captivity in the diversity and composition of their gut microbiota. Faecal samples were collected at day 1 and day 35, and named 'wild' and 'captive', respectively. Sequencing libraries were generated using a double-PCR protocol and gut microbiota profiles were generated using the standard DADA2 pipeline.
+> We captured a total of 30 individuals belonging to two small mammal species, namely Apodemus sylvaticus (N=15) and Crocidura russula (N=15). The captured animals were taken into an experimentation facility where they were kept for 5 weeks to study the effect of captivity in the diversity and composition of their gut microbiota. Faecal samples were collected at day 1 and day 35, and named 'wild' and 'captive', respectively. Sequencing libraries were generated using a double-PCR protocol and gut microbiota profiles were generated using the standard DADA2 pipeline.
 >
-> Microbial diversity (alpha diversity) of each sample was calculated by means of Shannon diversity (= Hill number of q=1, or exp(Shannon index) using the R package vegan). Overall diversity differences between species were calculated using a Wilcoxon signed-rank test. Whether and how captivity modifies the microbial diversity was studied using generalised mixed linear models, as implemented in the R package nlme.
+> Microbial diversity (alpha diversity) of each sample was calculated by means of Shannon diversity (= Hill number of q=1, or exp(Shannon index) using the R package vegan). Overall diversity differences between species were calculated using a Wilcoxon signed-rank test. Whether and how captivity modified the microbial diversity in each species was studied using paired Wilcoxon tests.
 >
-> Compositional dissimilarity (beta diversity across samples) was calculated by means of Bray-Curtis distances among samples. Whether the composition changes according to species and origin was studies using permutational multivariate analysis of variance as implemented in the R package vegan.
+> Compositional dissimilarity (beta diversity across samples) was calculated by means of Bray-Curtis distances among samples. Whether the composition changed according to species and origin was studies using permutational multivariate analysis of variance as implemented in the R package vegan.
+>
+> Full code used for generating the results can be found below.
 >
 > RESULTS
 >
-> Text 
+> The overall microbial diversity of both species was different (W = 856, p-value < 0.01), A. sylvaticus' diversity being higher (98.7±51.9) than that of C. russula (19.6±21.4). Captivity induced a significant diversity drop in both species (A. syvaticus: V = 17, p-value < 0.01; C. russula: V = 6, p-value < 0.01).
+>
+> Compositional differences were also significant both for species (R2 = 0.065, F = 4.845, p-value < 0.001) and origin of samples (R2 = 0.175, F = 6.487, p-value<0.001).
+>
+> CONCLUSION
+>
+> We conclude that captivity induces a significant change in the microbial communities of the two studied species.
 
 # Pipeline used to generate results
 
 ## Load data
-The only change you need to make to the code in this repository is to adjust the "setwd" parameter with the absolute path to the folder you unzipped from the file  downloaded from github. If you don't know the path, right-click the folder and find information about its exact location in your computer.
+The only change you need to make to the code in this repository is to adjust the "setwd" parameter with the absolute path to the folder you unzipped from the file downloaded from github. If you don't know the path, right-click the folder and find information about its exact location in your computer.
 
 ````R
 setwd("~/github/figure_workshop_2021/") #this needs to be changed
@@ -61,12 +69,22 @@ In this first step we will create a table containing the Shannon diversity value
 shannon_div <- t(t(exp(diversity(counts, index = "shannon", MARGIN = 2))))
 shannon_div <- merge(shannon_div,metadata,by="row.names")
 colnames(shannon_div)[1:2] <- c("Sample","Shannon")
+#Show table structure
 head(shannon_div)
+#Save table
+write.csv(shannon_div,"results/shannon_div.csv")
 ````
 # Does overall diversity change between species?
 We will run a Wilcoxon signed-rank test to  
 
 ````R
+#Group means
+aggregate(shannon_div$Shannon, by=list(shannon_div$Species), FUN=mean)
+#Group sd
+aggregate(shannon_div$Shannon, by=list(shannon_div$Species), FUN=sd)
+#Group quartiles
+by(shannon_div$Shannon, shannon_div$Species, summary)
+#Wilcoxon test
 wilcox.test(Shannon ~ Species, data = shannon_div)
 ````
 ````py
@@ -77,22 +95,32 @@ W = 856, p-value = 7.593e-12
 
 As p-value < 0.05 we accept that there are diversity differences between species (regardless of origin).
 ````
-# Does overall diversity change between origins?
+
+# Does captivity produce diversity changes?
 ````R
-summary(lme(Shannon ~ Origin, random=~1|Individual/Species, data=shannon_div))
+#Apodemus sylvaticus
+wilcox.test(Shannon ~ Origin, paired=TRUE, data=shannon_div[shannon_div$Species == "Apodemus_sylvaticus",])
+#Crocidura russula
+wilcox.test(Shannon ~ Origin, paired=TRUE, data=shannon_div[shannon_div$Species == "Crocidura_russula",])
 ````
+
 ````py
 RESULTS
-Fixed effects:  Shannon ~ Origin
-               Value Std.Error DF  t-value p-value
-(Intercept) 41.80053  9.810341 29 4.260864  0.0002
-OriginWild  34.80076 10.516611 29 3.309123  0.0025
+# Apodemus sylvaticus
+V = 17, p-value = 0.01245
+alternative hypothesis: true location shift is not equal to 0
+# Crocidura russula
+V = 6, p-value = 0.0008545
+alternative hypothesis: true location shift is not equal to 0
 
-As p-value of Origin is < 0.05 we accept that there are diversity differences between origins (factoring individuals and species).
+As in both cases p-value is < 0.05 we accept that there are diversity differences between origins.
 ````
+
 # Calculate pairwise dissimilarity values
 ````R
 bray_dist <- vegdist(t(counts), method="bray", binary=FALSE)
+#Save distance matrix
+write.csv(bray_dist,"results/bray_dist.csv")
 ````
 
 # Does the composition change by species and origin?
