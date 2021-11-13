@@ -32,15 +32,18 @@ library(ggpubr)
 Below you will find a short text about the methods and results of a research study. Your task will be to draw the figures (whatever you consider relevant or necessary) to support that text. You are welcome to use any tool for that, including R, Excel, Numbers, Adobe Illustrator, Inkscape, Microsoft Paint or any other tool you know. Yes, the assignment is as open as it seems. Draw any figure you consider relevant. You will find the raw data and the script for generating the results below.
 
 > METHODS
+>
 > We captured a total of 30 individuals belonging to two small mammal species, namely Apodemus sylvaticus (N=15) and Crocidura russula (N=15) in 4 different sampling locations. The captured animals were taken into an experimentation facility were they where kept for 5 weeks to study the effect of captivity in the diversity and composition of their gut microbiota. Faecal samples were collected at day 1 and day 35, and named 'wild' and 'captive', respectively. Sequencing libraries were generated using a double-PCR protocol and gut microbiota profiles were generated using the standard DADA2 pipeline.
-
+>
 > Microbial diversity (alpha diversity) of each sample was calculated by means of Shannon diversity (= Hill number of q=1, or exp(Shannon index) using the R package vegan). Overall diversity differences between species were calculated using a Wilcoxon signed-rank test. Whether and how captivity modifies the microbial diversity was studied using generalised mixed linear models, as implemented in the R package nlme.
-
+>
 > Compositional dissimilarity (beta diversity across samples) was calculated by means of Bray-Curtis distances among samples. Whether the composition changes according to species and origin was studies using permutational multivariate analysis of variance as implemented in the R package vegan.
-
+>
 > RESULTS
+>
+> Text 
 
-#Pipeline used to generate results
+# Pipeline used to generate results
 
 ## Load data
 The only change you need to make to the code in this repository is to adjust the "setwd" parameter with the absolute path to the folder you unzipped from the file  downloaded from github. If you don't know the path, right-click the folder and find information about its exact location in your computer.
