@@ -2,27 +2,43 @@
 ### 03/12/2021, Center for Evolutionary Hologenomics
 Data, scripts and documentation of the scientific figure-making workshop
 
-#Preparations
+# Preparations
 
 ## Download repository
 All the documentation required for the workshop is in this Github repository. In order to download it, you need to click the green button on the top-right of the page that says "Code", and then select the "Download ZIP" option. This will download the entire repository to your local computer. Once you decompress the ZIP file, you will find all the contents in a folder called "figure_workshop_2021".
 
 ## Install and open R or RStudio
-R: https://www.r-project.org/
-RStudio: https://www.rstudio.com/
+- R: https://www.r-project.org/
+- RStudio: https://www.rstudio.com/
 
 ## Install/load libraries
+For installing the libraries (if they were not installed before):
+````R
+install.packages(vegan)
+install.packages(nlme)
+install.packages(ggplot2)
+install.packages(ggpubr)
+````
+
+For loading the libraries (if already installed):
 ````R
 library(vegan)
 library(nlme)
 library(ggplot2)
+library(ggpubr)
 ````
 
-#Homework assignment
-The homework assignment will consist of the following:
-````py
-We analysed...
-````
+# Homework assignment
+Below you will find a short text about the methods and results of a research study. Your task will be to draw the figures (whatever you consider relevant or necessary) to support that text. You are welcome to use any tool for that, including R, Excel, Numbers, Adobe Illustrator, Inkscape, Microsoft Paint or any other tool you know. Yes, the assignment is as open as it seems. Draw any figure you consider relevant. You will find the raw data and the script for generating the results below.
+
+> METHODS
+> We captured a total of 30 individuals belonging to two small mammal species, namely Apodemus sylvaticus (N=15) and Crocidura russula (N=15) in 4 different sampling locations. The captured animals were taken into an experimentation facility were they where kept for 5 weeks to study the effect of captivity in the diversity and composition of their gut microbiota. Faecal samples were collected at day 1 and day 35, and named 'wild' and 'captive', respectively. Sequencing libraries were generated using a double-PCR protocol and gut microbiota profiles were generated using the standard DADA2 pipeline.
+
+> Microbial diversity (alpha diversity) of each sample was calculated by means of Shannon diversity (= Hill number of q=1, or exp(Shannon index) using the R package vegan). Overall diversity differences between species were calculated using a Wilcoxon signed-rank test. Whether and how captivity modifies the microbial diversity was studied using generalised mixed linear models, as implemented in the R package nlme.
+
+> Compositional dissimilarity (beta diversity across samples) was calculated by means of Bray-Curtis distances among samples. Whether the composition changes according to species and origin was studies using permutational multivariate analysis of variance as implemented in the R package vegan.
+
+> RESULTS
 
 #Pipeline used to generate results
 
@@ -36,7 +52,7 @@ metadata <- read.csv("data/metadata.csv",row.names=1)
 ````
 
 ## Calculate diversity statistics
-In this first step we will create a table containing the Shannon diversity values (exponential of the Shannon index, or Hill number of q=1) and the relevant metadata we will use for statistics and visualisations.
+In this first step we will create a table containing the Shannon diversity values and the relevant metadata we will use for statistics and visualisations.
 
 ````R
 shannon_div <- t(t(exp(diversity(counts, index = "shannon", MARGIN = 2))))
