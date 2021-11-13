@@ -2,6 +2,15 @@
 ### 03/12/2021, Center for Evolutionary Hologenomics
 Data, scripts and documentation of the scientific figure-making workshop
 
+#Preparations
+
+## Download repository
+All the documentation required for the workshop is in this Github repository. In order to download it, you need to click the green button on the top-right of the page that says "Code", and then select the "Download ZIP" option. This will download the entire repository to your local computer. Once you decompress the ZIP file, you will find all the contents in a folder called "figure_workshop_2021".
+
+## Install and open R or RStudio
+R: https://www.r-project.org/
+RStudio: https://www.rstudio.com/
+
 ## Install/load libraries
 ````R
 library(vegan)
@@ -9,20 +18,35 @@ library(nlme)
 library(ggplot2)
 ````
 
+#Homework assignment
+The homework assignment will consist of the following:
+````py
+We analysed...
+````
+
+#Pipeline used to generate results
+
 ## Load data
+The only change you need to make to the code in this repository is to adjust the "setwd" parameter with the absolute path to the folder you unzipped from the file  downloaded from github. If you don't know the path, right-click the folder and find information about its exact location in your computer.
+
 ````R
-setwd("~/github/figure_workshop_2021/")
+setwd("~/github/figure_workshop_2021/") #this needs to be changed
 counts <- read.csv("data/counts.csv",row.names=1)
 metadata <- read.csv("data/metadata.csv",row.names=1)
 ````
 
 ## Calculate diversity statistics
+In this first step we will create a table containing the Shannon diversity values (exponential of the Shannon index, or Hill number of q=1) and the relevant metadata we will use for statistics and visualisations.
+
 ````R
 shannon_div <- t(t(exp(diversity(counts, index = "shannon", MARGIN = 2))))
 shannon_div <- merge(shannon_div,metadata,by="row.names")
 colnames(shannon_div)[1:2] <- c("Sample","Shannon")
+head(shannon_div)
 ````
 # Does overall diversity change between species?
+We will run a Wilcoxon signed-rank test to  
+
 ````R
 wilcox.test(Shannon ~ Species, data = shannon_div)
 ````
