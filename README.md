@@ -105,7 +105,7 @@ head(shannon_div)
 write.csv(shannon_div,"results/shannon_div.csv")
 ````
 
-The table (first six rows) should look like this:
+The table (first six rows) should look like this. The Shannon column contains the diversity values, while the rest of the columns define metadata variables (Sample, Individual, Species and Origin).
 ````py
   Sample   Shannon Individual             Species  Origin
 1  M01P1  96.45447        M01 Apodemus_sylvaticus    Wild
@@ -116,15 +116,9 @@ The table (first six rows) should look like this:
 6  M03P5 118.71876        M03 Apodemus_sylvaticus Captive
 ````
 # Does overall diversity change between species?
-We will run a Wilcoxon signed-rank test to  
+We will run a Wilcoxon signed-rank test and print some summary statistics onto the screen, which might be useful for figure-making. 
 
 ````R
-#Group means
-aggregate(shannon_div$Shannon, by=list(shannon_div$Species), FUN=mean)
-#Group sd
-aggregate(shannon_div$Shannon, by=list(shannon_div$Species), FUN=sd)
-#Group quartiles
-by(shannon_div$Shannon, shannon_div$Species, summary)
 #Wilcoxon test
 wilcox.test(Shannon ~ Species, data = shannon_div)
 ````
@@ -137,7 +131,18 @@ W = 856, p-value = 7.593e-12
 As p-value < 0.05 we accept that there are diversity differences between species (regardless of origin).
 ````
 
+````R
+#Group means
+aggregate(shannon_div$Shannon, by=list(shannon_div$Species), FUN=mean)
+#Group sd
+aggregate(shannon_div$Shannon, by=list(shannon_div$Species), FUN=sd)
+#Group quartiles
+by(shannon_div$Shannon, shannon_div$Species, summary)
+````
+
 # Does captivity produce diversity changes in both species?
+Paired Wilcoxon tests comparing Wild vs. Captive values in each individual.
+
 ````R
 #Apodemus sylvaticus
 wilcox.test(Shannon ~ Origin, paired=TRUE, data=shannon_div[shannon_div$Species == "Apodemus_sylvaticus",])
@@ -158,6 +163,7 @@ As in both cases p-value is < 0.05 we accept that there are diversity difference
 ````
 
 # Calculate pairwise dissimilarity values
+This is necessary to compute compositional differences.
 ````R
 bray_dist <- vegdist(t(counts), method="bray", binary=FALSE)
 #Save distance matrix
