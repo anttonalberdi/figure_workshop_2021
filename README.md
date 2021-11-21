@@ -4,9 +4,6 @@ Dear all, welcome to the Github repository of the scientific figure-making works
 
 # Preparations
 
-## Download repository
-All the documentation required for the workshop is in this Github repository. In order to download it, you need to click the green button on the top-right of the page that says "Code", and then select the "Download ZIP" option. This will download the entire repository to your local computer. Once you decompress the ZIP file, you will find all the contents in a folder called "figure_workshop_2021".
-
 ## Install and open R or RStudio
 - R: https://www.r-project.org/
 - RStudio: https://www.rstudio.com/
@@ -27,6 +24,9 @@ library(nlme)
 library(ggplot2)
 library(ggpubr)
 ````
+
+## Download repository
+You will be able to generate the results and data for the homework assignment through running the R code shown below. The easiest way to run the exercise is to download this repository to your local computer. In order to download it, you need to click the green button on the top-right of the page that says "Code", and then select the "Download ZIP" option. This will download the entire repository to your local computer. Once you decompress the ZIP file, you will find all the contents in a folder called "figure_workshop_2021". This folder should be your working directory. You can leave it in the Downloads folder, or you might want to move it elsewhere. Be aware that you will need to define the absolute path to this folder in R (you will find more detailed explanations below).
 
 # Homework assignment
 Below you will find a short text about the methods and results of a research study. Your task will be to draw the figures (whatever you consider relevant or necessary) to support that text. You are welcome to use any tool for that, including R, Excel, Numbers, Adobe Illustrator, Inkscape, Microsoft Paint or any other tool you know. Yes, the assignment is as open as it seems. Draw any figure you consider relevant. You will find the raw data and the script for generating the results below.
