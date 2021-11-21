@@ -19,6 +19,7 @@ install.packages("vegan")
 install.packages("ggplot2")
 install.packages("ggpubr")
 ````
+Note that some libraries have many dependencies (other libraries that are required), so the installation might take a few minutes.
 
 For loading the libraries (if already installed):
 ````R
