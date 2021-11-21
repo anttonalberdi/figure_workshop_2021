@@ -15,9 +15,9 @@ Dear all, welcome to the Github repository of the scientific figure-making works
 ## Install/load libraries
 For installing the libraries (if they were not installed before):
 ````R
-install.packages(vegan)
-install.packages(ggplot2)
-install.packages(ggpubr)
+install.packages("vegan")
+install.packages("ggplot2")
+install.packages("ggpubr")
 ````
 
 For loading the libraries (if already installed):
@@ -64,9 +64,24 @@ Note that the statistical approach employed can be improved. It has been simplif
 The only change you need to make to the code in this repository is to adjust the "setwd" parameter with the absolute path to the folder you unzipped from the file downloaded from github. If you don't know the path, right-click the folder and find information about its exact location in your computer. The rest of the code should work by copy-pasting it directly to the R command line.
 
 ````R
-setwd("~/Downloads/figure_workshop_2021-main/") #Mac example. You will need to modify this
-setwd("C:/Users/XXXXX/Downloads/figure_workshop_2021-main") #Windows example. You will need to modify this. Use slashes (/) rather than backslashes (\) in the path, as otherwise R will most probably complain. 
+setwd("~/Downloads/figure_workshop_2021-main/figure_workshop_2021-main/") #Mac example. You will need to modify this
+setwd("C:/Users/XXXXX/Downloads/figure_workshop_2021-main/figure_workshop_2021-main/") #Windows example. You will need to modify this. Use slashes (/) rather than backslashes (\) in the path, as otherwise R will most probably complain. 
 ````
+## Load libraries
+For installing the libraries (if they were not installed before):
+````R
+install.packages("vegan")
+install.packages("ggplot2")
+install.packages("ggpubr")
+````
+
+For loading the libraries (if already installed):
+````R
+library(vegan)
+library(ggplot2)
+library(ggpubr)
+````
+
 ## Load data
 If the directory has been set properly, these data files should be loaded.
 ````R
