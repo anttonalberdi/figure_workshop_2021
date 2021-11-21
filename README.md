@@ -40,7 +40,7 @@ Below you will find a short text about the methods and results of a research stu
 > METHODS
 >
 > We captured a total of 30 individuals belonging to two small mammal species, namely Apodemus sylvaticus (N=15) and Crocidura russula (N=15). The captured animals were taken into an experimentation facility where they were kept for 5 weeks to study the effect of captivity in the diversity and composition of their gut microbiota. Faecal samples were collected at day 1 and day 35, and named 'wild' and 'captive', respectively. Sequencing libraries were generated using a double-PCR protocol and gut microbiota profiles were generated using the standard DADA2 pipeline.
->
+>/
 > Microbial diversity (alpha diversity) of each sample was calculated by means of Shannon diversity (= Hill number of q=1, or exp(Shannon index) using the R package vegan). Overall diversity differences between species were calculated using a Wilcoxon signed-rank test. Whether and how captivity modified the microbial diversity in each species was studied using paired Wilcoxon tests.
 >
 > Compositional dissimilarity (beta diversity across samples) was calculated by means of Bray-Curtis distances among samples. Whether the composition changed according to species and origin was studies using permutational multivariate analysis of variance as implemented in the R package vegan.
@@ -65,7 +65,7 @@ The only change you need to make to the code in this repository is to adjust the
 
 ````R
 setwd("~/Downloads/figure_workshop_2021-main/") #Mac example. You will need to modify this
-setwd("C:\Users\XXXXX\Downloads\figure_workshop_2021-main") #Windows example. You will need to modify this
+setwd("C:/Users/XXXXX/Downloads/figure_workshop_2021-main") #Windows example. You will need to modify this. Use slashes (/) rather than backslashes (\) in the path, as otherwise R will most probably complain. 
 ````
 ## Load data
 If the directory has been set properly, these data files should be loaded.
