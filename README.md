@@ -58,14 +58,22 @@ Below you will find a short text about the methods and results of a research stu
 > We conclude that captivity induces a significant change in the microbial communities of the two studied species.
 
 # Pipeline used to generate results
+Note that the statistical approach employed can be improved. It has been simplified to focus the assignment on the figure making rather than the actual analysis.
 
-## Load data
+## Set the working directory
 The only change you need to make to the code in this repository is to adjust the "setwd" parameter with the absolute path to the folder you unzipped from the file downloaded from github. If you don't know the path, right-click the folder and find information about its exact location in your computer. The rest of the code should work by copy-pasting it directly to the R command line.
 
 ````R
-setwd("~/github/figure_workshop_2021/") #this needs to be changed
+setwd("~/Downloads/figure_workshop_2021-main/") #Mac example. You will need to modify this
+setwd("C:\Users\XXXXX\Downloads\figure_workshop_2021-main") #Windows example. You will need to modify this
+````
+## Load data
+If the directory has been set properly, these data files should be loaded.
+````R
 counts <- read.csv("data/counts.csv",row.names=1)
 metadata <- read.csv("data/metadata.csv",row.names=1)
+head(counts) #visualise first 6 lines
+head(metadata) #visualise first 6 lines
 ````
 
 ## Calculate diversity statistics
@@ -102,7 +110,7 @@ W = 856, p-value = 7.593e-12
 As p-value < 0.05 we accept that there are diversity differences between species (regardless of origin).
 ````
 
-# Does captivity produce diversity changes?
+# Does captivity produce diversity changes in both species?
 ````R
 #Apodemus sylvaticus
 wilcox.test(Shannon ~ Origin, paired=TRUE, data=shannon_div[shannon_div$Species == "Apodemus_sylvaticus",])
