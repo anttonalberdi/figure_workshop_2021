@@ -2,8 +2,8 @@
 ### 03/12/2021, Center for Evolutionary Hologenomics
 Dear all, welcome to the Github repository of the scientific figure-making workshop 2021. All the documentation required for the workshop is, or will be, in this Github repository. Please, read through this introductory document to find your way to the relevant data, tools and assignments. This introductory document includes two main contents.
 
-1- **Preparations**: get ready for the workshop
-2- **Homework assignment**: explanation, text and code required for the assignment.
+1) **Preparations**: get ready for the workshop
+2) **Homework assignment**: explanation, text and code required for the assignment.
 
 # Preparations
 
