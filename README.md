@@ -1,6 +1,6 @@
 # Scientific figure-making workshop 2021
 ### 03/12/2021, Center for Evolutionary Hologenomics
-Data, scripts and documentation of the scientific figure-making workshop
+Dear all, welcome to the Github repository of the scientific figure-making workshop 2021. All the documentation required for the workshop is, or will be, in this Github repository. Please, read through this introductory document to find your way to the relevant data, tools and assignments. 
 
 # Preparations
 
