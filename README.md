@@ -60,7 +60,7 @@ Below you will find a short text about the methods and results of a research stu
 # Pipeline used to generate results
 
 ## Load data
-The only change you need to make to the code in this repository is to adjust the "setwd" parameter with the absolute path to the folder you unzipped from the file downloaded from github. If you don't know the path, right-click the folder and find information about its exact location in your computer.
+The only change you need to make to the code in this repository is to adjust the "setwd" parameter with the absolute path to the folder you unzipped from the file downloaded from github. If you don't know the path, right-click the folder and find information about its exact location in your computer. The rest of the code should work by copy-pasting it directly to the R command line.
 
 ````R
 setwd("~/github/figure_workshop_2021/") #this needs to be changed
