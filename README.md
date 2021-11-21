@@ -116,7 +116,7 @@ The table (first six rows) should look like this. The Shannon column contains th
 6  M03P5 118.71876        M03 Apodemus_sylvaticus Captive
 ````
 # Does overall diversity change between species?
-We will run a Wilcoxon signed-rank test and print some summary statistics onto the screen, which might be useful for figure-making. 
+We will run a Wilcoxon signed-rank test. 
 
 ````R
 #Wilcoxon test
@@ -131,6 +131,7 @@ W = 856, p-value = 7.593e-12
 As p-value < 0.05 we accept that there are diversity differences between species (regardless of origin).
 ````
 
+We will now print some summary statistics onto the screen, which might be useful for figure-making.
 ````R
 #Group means
 aggregate(shannon_div$Shannon, by=list(shannon_div$Species), FUN=mean)
