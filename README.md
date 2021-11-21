@@ -1,9 +1,10 @@
 # Scientific figure-making workshop 2021
 ### 03/12/2021, Center for Evolutionary Hologenomics
-Dear all, welcome to the Github repository of the scientific figure-making workshop 2021. All the documentation required for the workshop is, or will be, in this Github repository. Please, read through this introductory document to find your way to the relevant data, tools and assignments. This introductory document includes two main contents.
+Dear all, welcome to the Github repository of the scientific figure-making workshop 2021. All the documentation required for the workshop is, or will be, in this Github repository. Please, read through this introductory document to find your way to the relevant data, tools and assignments. This introductory document includes the following contents.
 
-1) **Preparations**: get ready for the workshop
+1) **Preparations**: get ready for the workshop.
 2) **Homework assignment**: explanation, text and code required for the assignment.
+3) **R pipeline**: code used for generating the results.
 
 # Preparations
 
@@ -30,8 +31,12 @@ library(ggpubr)
 You will be able to generate the results and data for the homework assignment through running the R code shown in the end of this document. The easiest way to run the exercise is to download this repository to your local computer. In order to download it, you need to click the green button on the top-right of the page that says "Code", and then select the "Download ZIP" option. This will download the entire repository to your local computer. Once you decompress the ZIP file, you will find all the contents in a folder called "figure_workshop_2021". This folder should be your working directory. You can leave it in the Downloads folder, or you might want to move it elsewhere. Be aware that you will need to define the absolute path to this folder in R (you will find more detailed explanations below).
 
 # Homework assignment
-Below you will find a short text about the methods and results of a research study. Your task will be to draw the figures (whatever you consider relevant or necessary) to support that text. You are welcome to use any tool for that, including R, Excel, Numbers, Adobe Illustrator, Inkscape, Microsoft Paint or any other tool you know. Yes, the assignment is as open as it seems. Draw any figure you consider relevant. You will find the raw data and the script for generating the results below.
+Before the workshop you will be requested to do some home work. The figure(s) you create before the workshop will be anonimously shared with the rest of the attendees and used during the course to identify the strengths and the weaknesses of the various figures created. Even the slightest effort you do to run the home work will be useful to improve the quality of the workshop, so I fully encourage you to spend 1-2h working on this assignment within the two weeks before the workshop. 
 
+## Assignment
+Below you will find a short text about the methods and results of a research study. Your task will be to draw the figure(s) (whatever you consider relevant or necessary) to support that text. You are welcome to use any tool for that, including R, Excel, Numbers, Adobe Illustrator, Inkscape, Microsoft Paint or any other tool you know. Yes, the assignment is as open as it seems. Draw one or multile figures, single or composite, as you consider relevant. Create figure notes as well. Then, include the figure references in the best place in the provided text (e.g., Figure 1, Figure 2b, etc.). You will find the raw data and the script for generating the results below.
+
+## Text
 > METHODS
 >
 > We captured a total of 30 individuals belonging to two small mammal species, namely Apodemus sylvaticus (N=15) and Crocidura russula (N=15). The captured animals were taken into an experimentation facility where they were kept for 5 weeks to study the effect of captivity in the diversity and composition of their gut microbiota. Faecal samples were collected at day 1 and day 35, and named 'wild' and 'captive', respectively. Sequencing libraries were generated using a double-PCR protocol and gut microbiota profiles were generated using the standard DADA2 pipeline.
