@@ -104,6 +104,17 @@ head(shannon_div)
 #Save table
 write.csv(shannon_div,"results/shannon_div.csv")
 ````
+
+The table (first six rows) should look like this:
+````py
+  Sample   Shannon Individual             Species  Origin
+1  M01P1  96.45447        M01 Apodemus_sylvaticus    Wild
+2  M01P5  87.15470        M01 Apodemus_sylvaticus Captive
+3  M02P1 102.99933        M02 Apodemus_sylvaticus    Wild
+4  M02P5 102.09800        M02 Apodemus_sylvaticus Captive
+5  M03P1 148.37887        M03 Apodemus_sylvaticus    Wild
+6  M03P5 118.71876        M03 Apodemus_sylvaticus Captive
+````
 # Does overall diversity change between species?
 We will run a Wilcoxon signed-rank test to  
 
