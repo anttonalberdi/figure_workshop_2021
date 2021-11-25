@@ -8,11 +8,12 @@ Dear all, welcome to the Github repository of the scientific figure-making works
 
 ### 25/11/2021 Update
 A bug was corrected in the distance matrix saving code.
+
 Original code yielding an error:
 ````R
 write.csv(bray_dist,"results/bray_dist.csv")
 ````
-Corrected code
+Corrected code:
 ````R
 write.csv(as.data.frame(as.matrix(bray_dist)),"results/bray_dist.csv")
 ````
