@@ -168,7 +168,7 @@ This is necessary to compute compositional differences.
 ````R
 bray_dist <- vegdist(t(counts), method="bray", binary=FALSE)
 #Save distance matrix
-write.csv(bray_dist,"results/bray_dist.csv")
+write.csv(as.data.frame(as.matrix(bray_dist)),"results/bray_dist.csv")
 ````
 
 # Does the composition change by species and origin?
