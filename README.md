@@ -6,6 +6,17 @@ Dear all, welcome to the Github repository of the scientific figure-making works
 2) **Homework assignment**: explanation, text and code required for the assignment.
 3) **R pipeline**: code used for generating the results.
 
+### 25/11/2021 Update
+A bug was corrected in the distance matrix saving code.
+Original code yielding an error:
+````R
+write.csv(bray_dist,"results/bray_dist.csv")
+````
+Corrected code
+````R
+write.csv(as.data.frame(as.matrix(bray_dist)),"results/bray_dist.csv")
+````
+
 # Preparations
 
 ## Install and open R or RStudio
