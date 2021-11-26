@@ -6,6 +6,12 @@ Dear all, welcome to the Github repository of the scientific figure-making works
 2) **Homework assignment**: explanation, text and code required for the assignment.
 3) **R pipeline**: code used for generating the results.
 
+### 26/11/2021 Update
+The following useless line (copy-paste error) was spotted and deleted.
+````R
+bray_dist <- adonis(data = bray_dist)
+````
+
 ### 25/11/2021 Update
 A bug was corrected in the distance matrix saving code.
 
@@ -185,7 +191,6 @@ write.csv(as.data.frame(as.matrix(bray_dist)),"results/bray_dist.csv")
 
 # Does the composition change by species and origin?
 ````R
-bray_dist <- adonis(data = bray_dist)
 adonis2(bray_dist ~ Origin/Species, data = metadata)
 ````
 ````py
